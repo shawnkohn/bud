@@ -1,15 +1,45 @@
-<article ng-app="dashboard" ng-controller="DashboardController">
-<header>
-    <h4 class="pull-right">
-        <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-    </h4>
-    <h1 class="h2">Budget Dashboard</h1>
-</header>
-
 <section>
+    <ui-view></ui-view>
+</section>
+
+
+
+<script type="text/ng-template" id="/dashboard.html"> 
 <h3>
     This is the body {{testVar}}
     <br>
     <button ng-click="changeVal()">Click Me</a>
 </h3>
-</section>
+
+<span>
+    <a href="#/paychecks">Income</a>
+</span>
+</script>
+
+<script type="text/ng-template" id="/paychecks.html">
+    <div ng-repeat="paycheck in paychecks">
+        <span style="font-size:20px; margin-left:10px;">
+            {{paycheck.name}}, {{paycheck.amount}}
+        </span>
+    </div>
+
+    <form ng-submit="addPaycheck()"
+        style="margin-top:30px;">
+        <h3>Add a new paycheck</h3>
+
+        <div class="form-group">
+            <input type="text"
+            class="form-control"
+            placeholder="Paycheck Name"
+            ng-model="name"></input>
+        </div>
+        <div class="form-group">
+            <input type="text"
+            class="form-control"
+            placeholder="Paycheck Amount"
+            ng-model="amount"></input>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+</script>
