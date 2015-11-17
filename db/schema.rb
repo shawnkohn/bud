@@ -11,10 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103005006) do
+ActiveRecord::Schema.define(version: 20151117214216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "paycheck_deductions", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "amount",              precision: 12, scale: 2
+    t.integer  "paycheck_id"
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.boolean  "is_deducted_pre_tax"
+  end
+
+  add_index "paycheck_deductions", ["is_deducted_pre_tax"], name: "index_paycheck_deductions_on_is_deducted_pre_tax", using: :btree
+  add_index "paycheck_deductions", ["paycheck_id"], name: "index_paycheck_deductions_on_paycheck_id", using: :btree
+
+  create_table "paychecks", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "amount",     precision: 12, scale: 2
+    t.integer  "user_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "paychecks", ["user_id"], name: "index_paychecks_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -34,4 +56,6 @@ ActiveRecord::Schema.define(version: 20151103005006) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "paycheck_deductions", "paychecks"
+  add_foreign_key "paychecks", "users"
 end

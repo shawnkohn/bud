@@ -1,4 +1,4 @@
-angular.module('bud', ['ui.router', 'fcsa-number'])
+angular.module('bud', ['ui.router', 'templates', 'fcsa-number'])
 .config([
     '$stateProvider',
     '$urlRouterProvider',
@@ -11,8 +11,13 @@ angular.module('bud', ['ui.router', 'fcsa-number'])
             })
             .state('paychecks', {
                 url: '/paychecks',
-                templateUrl: '/paychecks.html',
-                controller: 'PaychecksCtrl'
+                templateUrl: 'paychecks/_paychecks.html',
+                controller: 'PaychecksCtrl',
+                resolve: {
+                     paycheckPromise: ['paychecks', function(paychecks){
+                          return paychecks.getAll();
+                     }]
+                }
             })
             .state('deductions', {
                 url: '/deductions/{id}',
@@ -30,12 +35,6 @@ angular.module('bud', ['ui.router', 'fcsa-number'])
             preventInvalidInput: true
         })
     }])
-.factory('paychecks', [function(){
-    var o = {
-        paychecks: []
-    };
-    return o;
-}])
 .controller('MainCtrl', [
         '$scope',
         function($scope, paychecks){
@@ -45,46 +44,4 @@ angular.module('bud', ['ui.router', 'fcsa-number'])
                 return;
             }
         }
-])
-.controller('PaychecksCtrl', [
-        '$scope',
-        '$stateParams',
-        'paychecks',
-        function($scope, $stateParams, paychecks){
-            $scope.addPaycheck = function(){
-                  if(!$scope.name || $scope.name === '') { return; }
-                  if(!$scope.amount || $scope.amount === '') { return; }
-                  
-                  $scope.paychecks.push({
-                      name: $scope.name, 
-                      amount: $scope.amount,
-                      deductions: []
-                  });
-                  
-                  $scope.name = '';
-                  $scope.amount = '';
-            };
-
-            
-            $scope.paychecks= paychecks.paychecks;
-        
-}])
-.controller('DeductionsCtrl', [
-        '$scope',
-        '$stateParams',
-        'paychecks',
-        function($scope, $stateParams, paychecks){
-            $scope.paycheck = paychecks.paychecks[$stateParams.id];
-            $scope.addDeduction = function(){
-                $scope.paycheck.deductions.push({
-                    name: $scope.name,
-                    amount: $scope.amount,
-                    isDeductedPreTax: $scope.isDeductedPreTax
-                });
-                    alert($scope.paycheck.deductions.length);
-                $scope.name = '';
-                $scope.amount = '';
-                $scope.isDeductedPreTax = false;
-            };
-        
-}]);
+]);

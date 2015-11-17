@@ -1,0 +1,2 @@
+module PaycheckDeductionsHelper
+end
