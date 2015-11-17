@@ -1,4 +1,4 @@
-angular.module('bud', ['ui.router'])
+angular.module('bud', ['ui.router', 'fcsa-number'])
 .config([
     '$stateProvider',
     '$urlRouterProvider',
@@ -12,10 +12,23 @@ angular.module('bud', ['ui.router'])
             .state('paychecks', {
                 url: '/paychecks',
                 templateUrl: '/paychecks.html',
-                controller: 'PaychecksCtrl'
+                controller: 'PaychecksCtrl as ctrl'
+            })
+            .state('deductions', {
+                url: '/deductions',
+                templateUrl: '/deductions.html',
+                controller: 'DeductionsCtrl'
             });
 
         $urlRouterProvider.otherwise('dashboard');
+    }])
+.config([
+    'fcsaNumberConfigProvider',
+    function(fcsaNumberConfigProvider) {
+        fcsaNumberConfigProvider.setDefaultOptions({
+            maxDecimals: 2,
+            preventInvalidInput: true
+        })
     }])
 .factory('paychecks', [function(){
     var o = {
@@ -40,12 +53,15 @@ angular.module('bud', ['ui.router'])
         function($scope, $stateParams, paychecks){
             $scope.addPaycheck = function(){
                   if(!$scope.name || $scope.name === '') { return; }
+                  if(!$scope.amount) { return; }
                   $scope.paychecks.push({name: $scope.name, amount: $scope.amount});
                   $scope.name = '';
                   $scope.amount = '';
             };
+
             
-            $scope.paychecks= paychecks.paychecks
+            $scope.paychecks= paychecks.paychecks;
+        
 }]);
 
-;
+

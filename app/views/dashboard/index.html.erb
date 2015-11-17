@@ -19,27 +19,30 @@
 <script type="text/ng-template" id="/paychecks.html">
     <div ng-repeat="paycheck in paychecks">
         <span style="font-size:20px; margin-left:10px;">
-            {{paycheck.name}}, {{paycheck.amount}}
+            {{paycheck.name}}, {{paycheck.amount | currency}} 
         </span>
     </div>
 
-    <form ng-submit="addPaycheck()"
+    <form name="form"  ng-submit="addPaycheck()"
         style="margin-top:30px;">
         <h3>Add a new paycheck</h3>
 
         <div class="form-group">
             <input type="text"
             class="form-control"
-            placeholder="Paycheck Name"
+            placeholder="Name"
             ng-model="name"></input>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error': form.amount.$invalid }">
             <input type="text"
             class="form-control"
-            placeholder="Paycheck Amount"
-            ng-model="amount"></input>
+            placeholder="Gross Amount"
+            ng-model="amount" name="amount" fcsa-number></input>
+            
+            <div ng-if="form.amount.$invalid" class="help-block">
+            The amount should only have up to two decimals, review the number for accuracy
+            </div>
         </div>
-
         <button type="submit" class="btn btn-primary">Post</button>
     </form>
 </script>
