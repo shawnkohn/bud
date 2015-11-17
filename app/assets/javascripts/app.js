@@ -12,10 +12,10 @@ angular.module('bud', ['ui.router', 'fcsa-number'])
             .state('paychecks', {
                 url: '/paychecks',
                 templateUrl: '/paychecks.html',
-                controller: 'PaychecksCtrl as ctrl'
+                controller: 'PaychecksCtrl'
             })
             .state('deductions', {
-                url: '/deductions',
+                url: '/deductions/{id}',
                 templateUrl: '/deductions.html',
                 controller: 'DeductionsCtrl'
             });
@@ -53,8 +53,14 @@ angular.module('bud', ['ui.router', 'fcsa-number'])
         function($scope, $stateParams, paychecks){
             $scope.addPaycheck = function(){
                   if(!$scope.name || $scope.name === '') { return; }
-                  if(!$scope.amount) { return; }
-                  $scope.paychecks.push({name: $scope.name, amount: $scope.amount});
+                  if(!$scope.amount || $scope.amount === '') { return; }
+                  
+                  $scope.paychecks.push({
+                      name: $scope.name, 
+                      amount: $scope.amount,
+                      deductions: []
+                  });
+                  
                   $scope.name = '';
                   $scope.amount = '';
             };
@@ -62,6 +68,23 @@ angular.module('bud', ['ui.router', 'fcsa-number'])
             
             $scope.paychecks= paychecks.paychecks;
         
+}])
+.controller('DeductionsCtrl', [
+        '$scope',
+        '$stateParams',
+        'paychecks',
+        function($scope, $stateParams, paychecks){
+            $scope.paycheck = paychecks.paychecks[$stateParams.id];
+            $scope.addDeduction = function(){
+                $scope.paycheck.deductions.push({
+                    name: $scope.name,
+                    amount: $scope.amount,
+                    isDeductedPreTax: $scope.isDeductedPreTax
+                });
+                    alert($scope.paycheck.deductions.length);
+                $scope.name = '';
+                $scope.amount = '';
+                $scope.isDeductedPreTax = false;
+            };
+        
 }]);
-
-
