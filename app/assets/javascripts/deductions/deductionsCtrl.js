@@ -11,7 +11,7 @@ angular.module('bud')
                 paychecks.addDeduction(paycheck.id, {
                     name: $scope.name,
                     amount: $scope.amount,
-                    isDeductedPreTax: $scope.isDeductedPreTax
+                    is_deducted_pre_tax: $scope.isDeductedPreTax
                 }).success(function(deduction){
                     $scope.paycheck.paycheck_deductions.push(deduction);
                 });
