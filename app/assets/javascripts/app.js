@@ -15,17 +15,18 @@ angular.module('bud', ['ui.router', 'templates', 'fcsa-number'])
                 controller: 'PaychecksCtrl',
                 resolve: {
                      paycheckPromise: ['paychecks', function(paychecks){
-                          return paychecks.getAll();
+                           return paychecks.getAll();
                      }]
                 }
             })
             .state('deductions', {
                 url: '/deductions/{id}',
-                templateUrl: '/deductions.html',
+                templateUrl: 'deductions/_deductions.html',
                 controller: 'DeductionsCtrl',
                 resolve: {
                      paycheck: ['$stateParams', 'paychecks', function($stateParams, paychecks){
-                          return paychecks.get($stateParams.id);
+                           return paychecks.get($stateParams.id);
+
                      }]
                 }
             });

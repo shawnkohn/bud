@@ -25,6 +25,11 @@ angular.module('bud')
                     return res.data;
                 });
             };
+
+            o.addDeduction = function(id, deduction) {
+                return $http.post('/paychecks/' + id + '/paycheck_deductions.json', deduction);
+            };
+
             
             return o;
 }])

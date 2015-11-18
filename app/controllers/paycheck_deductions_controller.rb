@@ -1,8 +1,8 @@
 class PaycheckDeductionsController < ApplicationController
 
     def create
-        post = Post.find(params[:post_id])
-        deduction = post.paycheck_deductions.create(paycheck_deduction_params)
+        paycheck = current_user.paychecks.find(params[:paycheck_id])
+        deduction = paycheck.paycheck_deductions.create(paycheck_deduction_params)
         respond_with paycheck, deduction
     end
 

@@ -1,14 +1,14 @@
 class PaychecksController < ApplicationController
     def index
-        respond_with Paycheck.all
+        respond_with current_user.paychecks
     end
 
     def create
-        respond_with Paycheck.create(paycheck_params)
+        respond_with current_user.paychecks.create(paycheck_params)
     end
 
     def show
-        respond_with Paycheck.find(params[:id])
+        respond_with current_user.paychecks.find(params[:id])
     end
 
 
