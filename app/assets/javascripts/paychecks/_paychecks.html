@@ -2,7 +2,7 @@
     <div ng-repeat="paycheck in paychecks">
         <span style="font-size:20px; margin-left:10px;">
             {{paycheck.name}}, {{paycheck.amount | currency}}
-            <a href="#/deductions/{{$index}}">Deductions</a> 
+            <a href="#/deductions/{{paycheck.id}}">Deductions</a> 
         </span>
     </div>
 

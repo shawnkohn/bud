@@ -19,6 +19,13 @@ angular.module('bud')
                     o.paychecks.push(data);
                 });
             };
+            
+            o.get = function(id){
+                return $http.get('/paychecks/' + id + '.json').then(function(res){
+                    return res.data;
+                });
+            };
+            
             return o;
 }])
 

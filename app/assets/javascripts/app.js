@@ -22,7 +22,12 @@ angular.module('bud', ['ui.router', 'templates', 'fcsa-number'])
             .state('deductions', {
                 url: '/deductions/{id}',
                 templateUrl: '/deductions.html',
-                controller: 'DeductionsCtrl'
+                controller: 'DeductionsCtrl',
+                resolve: {
+                     paycheck: ['$stateParams', 'paychecks', function($stateParams, paychecks){
+                          return paychecks.get($stateParams.id);
+                     }]
+                }
             });
 
         $urlRouterProvider.otherwise('dashboard');

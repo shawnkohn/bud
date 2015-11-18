@@ -2,10 +2,10 @@
 angular.module('bud')
 .controller('DeductionsCtrl', [
         '$scope',
-        '$stateParams',
         'paychecks',
-        function($scope, $stateParams, paychecks){
-            $scope.paycheck = paychecks.paychecks[$stateParams.id];
+        'paycheck',
+        function($scope, $stateParams, paychecks, paycheck){
+            $scope.paycheck = paycheck
             $scope.addDeduction = function(){
                 $scope.paycheck.deductions.push({
                     name: $scope.name,
