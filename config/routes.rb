@@ -7,7 +7,7 @@ Rails.application.routes.draw do
    root 'dashboard#index'
 
    resources :paychecks, only: [:create, :index, :show] do
-       resources :paycheck_deductions, only: [:show, :create] 
+       resources :paycheck_deductions, only: [:show, :create]
    end
    
   # Example of regular route:

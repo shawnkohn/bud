@@ -11,6 +11,16 @@ class PaychecksControllerTest < ActionController::TestCase
         assert_response :success
     end
 
+    test "should create paycheck" do
+        assert_difference('Paycheck.count') do
+            post :create, paycheck: {name: "This one is new", amount: 1234, user_id: @user.id}
+        end
+    end
+
+    test "should show paycheck" do
+        get :show, user_id: @user, id: @paycheck, :format => :json
+        assert_response :success
+    end
 
     private
 
