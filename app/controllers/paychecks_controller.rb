@@ -1,4 +1,7 @@
 class PaychecksController < ApplicationController
+
+    require 'Income'
+
     def index
         respond_with current_user.paychecks
     end
@@ -11,6 +14,13 @@ class PaychecksController < ApplicationController
         respond_with current_user.paychecks.find(params[:id])
     end
 
+    def net_income
+        respond_with 5
+    end
+
+    def gross_income
+        respond_with 10
+    end
 
     
     private

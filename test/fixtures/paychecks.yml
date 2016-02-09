@@ -11,3 +11,9 @@ two:
   name: MyString
   amount: 10.00
   user_id: 1
+
+three:
+  id: 3
+  name: Third
+  amount: 23.43
+  user_id: 2

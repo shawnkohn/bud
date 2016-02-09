@@ -6,4 +6,5 @@ class Paycheck < ActiveRecord::Base
   def as_json(options = {})
       super(options.merge(include: :paycheck_deductions))
   end
+
 end

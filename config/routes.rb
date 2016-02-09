@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
    resources :paychecks, only: [:create, :index, :show] do
        resources :paycheck_deductions, only: [:show, :create]
+       collection do
+           get 'net_income'
+           get 'gross_income'
+       end
    end
    
   # Example of regular route:

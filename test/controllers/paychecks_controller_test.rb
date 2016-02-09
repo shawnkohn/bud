@@ -22,6 +22,17 @@ class PaychecksControllerTest < ActionController::TestCase
         assert_response :success
     end
 
+    test "should get net_income" do
+        get :net_income, :format => :json
+        assert_response :success
+    end
+
+    test "should get gross_income" do
+        get :gross_income, :format => :json
+        assert_response :success
+    end
+    
+    
     private
 
     def initialize_paycheck

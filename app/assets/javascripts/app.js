@@ -6,8 +6,8 @@ angular.module('bud', ['ui.router', 'templates', 'fcsa-number'])
         $stateProvider
             .state('dashboard', {
                 url: '/dashboard',
-                templateUrl: '/dashboard.html',
-                controller: 'MainCtrl'
+                templateUrl: 'dashboard/_dashboard.html',
+                controller: 'DashboardCtrl'
             })
             .state('paychecks', {
                 url: '/paychecks',
@@ -40,14 +40,4 @@ angular.module('bud', ['ui.router', 'templates', 'fcsa-number'])
             maxDecimals: 2,
             preventInvalidInput: true
         })
-    }])
-.controller('MainCtrl', [
-        '$scope',
-        function($scope, paychecks){
-            $scope.testVar = "Hello from MainCtrl";
-            $scope.changeVal = function() {
-                $scope.testVar  = "Hello from inside changeVal";
-                return;
-            }
-        }
-]);
+}]);
