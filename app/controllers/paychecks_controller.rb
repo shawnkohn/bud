@@ -1,7 +1,5 @@
 class PaychecksController < ApplicationController
 
-    require 'Income'
-
     def index
         respond_with current_user.paychecks
     end
