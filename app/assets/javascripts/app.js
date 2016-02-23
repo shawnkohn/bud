@@ -9,10 +9,10 @@ angular.module('bud', ['ui.router', 'templates', 'fcsa-number'])
                 templateUrl: 'dashboard/_dashboard.html',
                 controller: 'DashboardCtrl'
             })
-            .state('paychecks', {
-                url: '/paychecks',
-                templateUrl: 'paychecks/_paychecks.html',
-                controller: 'PaychecksCtrl',
+            .state('income', {
+                url: '/income',
+                templateUrl: 'income/_income.html',
+                controller: 'IncomeCtrl',
                 resolve: {
                      paycheckPromise: ['paychecks', function(paychecks){
                            return paychecks.getAll();

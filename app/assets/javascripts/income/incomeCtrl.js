@@ -1,6 +1,6 @@
 
 angular.module('bud')
-.controller('PaychecksCtrl', [
+.controller('IncomeCtrl', [
         '$scope',
         '$stateParams',
         'paychecks',
@@ -16,7 +16,13 @@ angular.module('bud')
                   
                   $scope.name = '';
                   $scope.amount = '';
+                  $scope.stateAddingNewPaycheck = false;
             };
             
             $scope.paychecks= paychecks.paychecks;
+
+            $scope.stateAddingNewPaycheck=false;
+            $scope.setStateToAddingNewPaycheck = function(){
+                $scope.stateAddingNewPaycheck = true;
+            };
 }]);

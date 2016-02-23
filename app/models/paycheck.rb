@@ -1,5 +1,5 @@
 class Paycheck < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :budget
 
   has_many :paycheck_deductions
 

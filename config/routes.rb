@@ -6,12 +6,15 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'dashboard#index'
 
-   resources :paychecks, only: [:create, :index, :show] do
-       resources :paycheck_deductions, only: [:show, :create]
+   resources :budgets, only: [:show] do
        collection do
            get 'net_income'
            get 'gross_income'
        end
+   end
+
+   resources :paychecks, only: [:create, :index, :show] do
+       resources :paycheck_deductions, only: [:index, :show, :create]
    end
    
   # Example of regular route:

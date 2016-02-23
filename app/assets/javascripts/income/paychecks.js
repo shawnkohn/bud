@@ -30,11 +30,6 @@ angular.module('bud')
                 return $http.post('/paychecks/' + id + '/paycheck_deductions.json', deduction);
             };
 
-            o.getTotalNetIncome = function(){
-                return 1000;
-            };
-
-            
             return o;
 }])
 

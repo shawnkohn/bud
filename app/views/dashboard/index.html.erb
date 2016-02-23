@@ -1,3 +1,9 @@
+<%
+    if current_user.budget == nil
+        current_user.budget = Budget.new()
+    end
+%>
+
 <section>
     <ui-view></ui-view>
 </section>

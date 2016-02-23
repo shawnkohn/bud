@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  monthly_amount_for_financial_goals: 
+  monthly_amount_for_financial_goals: 
+  user_id: 
+
+two:
+  monthly_amount_for_financial_goals: 
+  monthly_amount_for_financial_goals: 
+  user_id: 
