@@ -27,6 +27,7 @@ angular.module('bud')
             };
 
             o.addDeduction = function(id, deduction) {
+alert("deduction" + JSON.stringify(deduction));
                 return $http.post('/paychecks/' + id + '/paycheck_deductions.json', deduction);
             };
 

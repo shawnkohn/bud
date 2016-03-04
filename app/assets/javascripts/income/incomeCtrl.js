@@ -5,6 +5,12 @@ angular.module('bud')
         '$stateParams',
         'paychecks',
         function($scope, $stateParams, paychecks){
+            $scope.paychecks = paychecks.paychecks;
+            
+            $scope.stateAddingNewPaycheck = false;
+            $scope.paycheckIdShowingDeductions = 0;
+            $scope.deductionIdInEditMode = 0;
+            
             $scope.addPaycheck = function(){
                   if(!$scope.name || $scope.name === '') { return; }
                   if(!$scope.amount || $scope.amount === '') { return; }
@@ -19,10 +25,18 @@ angular.module('bud')
                   $scope.stateAddingNewPaycheck = false;
             };
             
-            $scope.paychecks= paychecks.paychecks;
-
-            $scope.stateAddingNewPaycheck=false;
-            $scope.setStateToAddingNewPaycheck = function(){
-                $scope.stateAddingNewPaycheck = true;
+            $scope.addDeduction = function(paycheck, deduction){
+                paychecks.addDeduction(paycheck.id, {
+                    name: deduction.name,
+                    amount: deduction.amount,
+                    is_deducted_pre_tax: deduction.isDeductedPreTax
+                }).success(function(deduction){
+                    paycheck.paycheck_deductions.push(deduction);
+                });
+                deduction.name = '';
+                deduction.amount = '';
+                deduction.isDeductedPreTax = false;
             };
+
+
 }]);
