@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222162259) do
+ActiveRecord::Schema.define(version: 20160304164836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,14 +27,12 @@ ActiveRecord::Schema.define(version: 20160222162259) do
 
   create_table "paycheck_deductions", force: :cascade do |t|
     t.string   "name"
-    t.decimal  "amount",              precision: 12, scale: 2
+    t.decimal  "amount",      precision: 12, scale: 2
     t.integer  "paycheck_id"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.boolean  "is_deducted_pre_tax"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
-  add_index "paycheck_deductions", ["is_deducted_pre_tax"], name: "index_paycheck_deductions_on_is_deducted_pre_tax", using: :btree
   add_index "paycheck_deductions", ["paycheck_id"], name: "index_paycheck_deductions_on_paycheck_id", using: :btree
 
   create_table "paychecks", force: :cascade do |t|

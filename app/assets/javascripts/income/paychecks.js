@@ -26,11 +26,25 @@ angular.module('bud')
                 });
             };
 
+            o.update = function(paycheck) {
+                return $http.patch('/paychecks/' + paycheck.id + '.json', paycheck);
+            };
+
+            o.destroy = function(paycheck_id) {
+                return $http.delete('/paychecks/' + paycheck_id + '.json');
+            };
+
             o.addDeduction = function(id, deduction) {
-alert("deduction" + JSON.stringify(deduction));
                 return $http.post('/paychecks/' + id + '/paycheck_deductions.json', deduction);
             };
 
+            o.updateDeduction = function(id, deduction) {
+                return $http.patch('/paychecks/' + id + '/paycheck_deductions/' + deduction.id + '.json', deduction);
+            };
+
+            o.destroyDeduction = function(paycheck_id, deduction_id) {
+                return $http.delete('/paychecks/' + paycheck_id + '/paycheck_deductions/' + deduction_id + '.json');
+            };
             return o;
 }])
 

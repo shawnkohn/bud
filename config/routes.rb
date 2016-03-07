@@ -13,8 +13,8 @@ Rails.application.routes.draw do
        end
    end
 
-   resources :paychecks, only: [:create, :index, :show] do
-       resources :paycheck_deductions, only: [:index, :show, :create]
+   resources :paychecks, only: [:create, :index, :update, :destroy] do
+       resources :paycheck_deductions, only: [:index, :create, :update, :destroy]
    end
    
   # Example of regular route:
