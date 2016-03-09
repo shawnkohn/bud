@@ -29,3 +29,7 @@
         text-align:right;
         float:right;
     }
+
+    .dashboard_row {
+        padding-top:35px;
+    }

@@ -1,16 +1,20 @@
-
 angular.module('bud')
 .controller('IncomeCtrl', [
         '$scope',
         '$stateParams',
         'paychecks',
-        function($scope, $stateParams, paychecks){
+        'incomeService',
+        function($scope, $stateParams, paychecks, incomeService){
             $scope.paychecks = paychecks.paychecks;
             
             $scope.stateAddingNewPaycheck = false;
             $scope.paycheckIdShowingDeductions = 0;
             $scope.deductionIdInEditMode = 0;
             $scope.paycheckIdInEditMode = 0;
+            $scope.biweeklyTotalGrossPay = 0;
+            $scope.biweeklyTotalNetPay = 0
+            
+            updateTotalPay();
             
             $scope.addPaycheck = function(){
                   if(!$scope.name || $scope.name === '') { return; }
@@ -21,6 +25,8 @@ angular.module('bud')
                       amount: $scope.amount,
                   });
                   
+                  updateTotalPay();
+
                   $scope.name = '';
                   $scope.amount = '';
                   $scope.stateAddingNewPaycheck = false;
@@ -33,6 +39,8 @@ angular.module('bud')
 
                     paychecks = paychecks.getAll();
                     $scope.paychecks = paychecks;
+
+                    updateTotalPay();
                 });
             };
 
@@ -40,6 +48,8 @@ angular.module('bud')
                 paychecks.update(paycheck).success(function(){
                     $scope.paycheckIdInEditMode = 0;
                 });
+
+                updateTotalPay();
             };
 
             $scope.addDeduction = function(paycheck, deduction){
@@ -59,6 +69,8 @@ angular.module('bud')
                 });
                 deduction.name = '';
                 deduction.amount = '';
+
+                updateTotalPay();
             };
 
             $scope.destroyDeduction = function(paycheck, deduction){
@@ -69,12 +81,16 @@ angular.module('bud')
                     remove(paycheck.paycheck_deductions, deduction);
 
                 });
+
+                updateTotalPay();
             };
 
             $scope.updatePaycheckDeduction = function(paycheck_id, deduction){
                 paychecks.updateDeduction(paycheck_id, deduction).success(function(){
                     $scope.deductionIdInEditMode = 0;
                 });
+
+                updateTotalPay();
             };
 
             $scope.setPaycheckIdShowingDeductions = function(paycheck_id){
@@ -89,6 +105,14 @@ angular.module('bud')
                 $scope.deductionIdInEditMode = deduction_id;
             };
             
+            function updateTotalPay(){
+                incomeService.getBiweeklyNetPay().success(function(data){
+                    $scope.biweeklyTotalNetPay = data;
+                });
+                incomeService.getBiweeklyGrossPay().success(function(data){
+                    $scope.biweeklyTotalGrossPay = data;
+                });
+            };
             function remove(arr, item) {
                 for(var i = arr.length; i--;) {
                     if(arr[i] === item) {

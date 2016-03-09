@@ -1,4 +1,3 @@
-
 angular.module('bud')
 .factory('paychecks', [
         '$http',
@@ -20,12 +19,6 @@ angular.module('bud')
                 });
             };
             
-            o.get = function(id){
-                return $http.get('/paychecks/' + id + '.json').then(function(res){
-                    return res.data;
-                });
-            };
-
             o.update = function(paycheck) {
                 return $http.patch('/paychecks/' + paycheck.id + '.json', paycheck);
             };

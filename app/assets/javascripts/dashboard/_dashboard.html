@@ -1,41 +1,68 @@
-<div class="container" width="75%">
-    <div class="col-md-10">
-        <div class="h2">
-            Income <span class="h4"><a href="#/income">Edit</a></span>
-            <br>
-            
-            <div ng-if='stateEditIncome'>
-                I Want to Edit
-            </div>
+<div class="col-md-11 col-md-offset-1 h2">
 
-            <div class="col-md-6 h4"> 
-                Monthly Gross Income:
-            </div>
-            <div class="col-md-3 h4 text-right"> {{grossIncome | currency}} </div> 
-            <div class="col-md-6 h4"> 
-                Monthly Net Income:
-            </div>
-            <div class="col-md-3 h4 text-right"> {{netIncome | currency}} </div> 
+    <div class="col-md-11">
+        Income <span class="h4"><a href="#/income">Edit</a></span>
+    </div>
+    <div class="col-md-7 col-md-offset-1 h4">
+        <div>
+            <span class="col-md-8"> 
+                BiWeekly Gross Income:
+            </span>
+            <span class="col-md-1"> $ </span>
+            <span class="col-md-3 currency_amount"> {{grossIncome | number : 2}} </span>
         </div>
-
-    <div class="col-md-10">
-        <div class="col-md-6 h3">
-            <span class="h5"><a href="#/paychecks">Edit</a></span>
-            Monthly Financial Goals: 
-        <span class="h6"><br>(target minimum 20%, {{monthlyFinancialGoalsTarget | currency}})</span>
-        </div>
-    
-        <div class="col-md-3 h3 text-right">{{monthlyFinancialGoals | currency}}</div>
-        <div class="col-md-3 h3 text-right">{{monthlyFinancialGoalsIncomePerc}}</div>
-</div>
-
-<div class="col-md-10">
-    <div class="col-md-6 h3">
-        <span class="h5"><a href="#/paychecks">Edit</a></span>
-        Monthly Fixed Expenses: 
-        <span class="h6"><br>(target maximum 45%, {{monthlyFixedExpensesTarget | currency}})</span>
+        <div class="dashboard_row"> 
+            <span class="col-md-8"> 
+                BiWeekly Net Income:
+            </span>
+            <span class="col-md-1"> $ </span>
+            <span class="col-md-3 currency_amount"> {{netIncome | number : 2}} </span>
+        </div> 
     </div>
     
-    <div class="col-md-3 h3 text-right">{{monthlyFixedExpenses | currency}}</div>
-    <div class="col-md-3 h3 text-right">{{monthlyFixedExpensesIncomePerc}}</div>
+    
+    <div class="col-md-11 dashboard_row">
+        Financial Goals <span class="h4"><a href="#/goals">Edit</a></span>
+    </div>
+    <div class="col-md-7 col-md-offset-1 h4">
+        <div>
+            <span class="col-md-8"> 
+                Monthly Income for Goals:
+            </span>
+            <span class="col-md-1"> $ </span>
+            <span class="col-md-3 currency_amount"> xxx.xx </span>
+        </div>
+    </div>
+
+    
+    <div class="col-md-11 dashboard_row">
+        Expenses <span class="h4"><a href="#/goals">Edit</a></span>
+    </div>
+    <div class="col-md-7 col-md-offset-1 h4">
+        <div>
+            <span class="col-md-8"> 
+                Monthly Irregular Expenses:
+            </span>
+            <span class="col-md-1"> $ </span>
+            <span class="col-md-3 currency_amount"> xxx.xx </span>
+        </div>
+        <div class="dashboard_row">
+            <span class="col-md-8"> 
+                Monthly Irregular Expenses:
+            </span>
+            <span class="col-md-1"> $ </span>
+            <span class="col-md-3 currency_amount"> xxx.xx </span>
+        </div>
+        <div class="dashboard_row">
+            <span class="col-md-8"> 
+                Monthly Irregular Expenses:
+            </span>
+            <span class="col-md-1"> $ </span>
+            <span class="col-md-3 currency_amount"> xxx.xx </span>
+        </div>
+    </div>
+
 </div>
+
+
+<div class="h6"><br>(target minimum 20%, {{monthlyFinancialGoalsTarget | currency}})</div>

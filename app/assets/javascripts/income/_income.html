@@ -1,17 +1,19 @@
 <div class="row">
+    <div class="h6 co">
+<div class="row">
     <div class="h2 col-md-8 col-md-offset-2">
         <table class="table table-borderless">
             <tbody>
                 <tr>
                     <td>BiWeekly Gross Pay</td>
                     <td align="right">$</td>
-                    <td align="right">1,325.46</td>
+                    <td align="right">{{biweeklyTotalGrossPay | number : 2}}</td>
                 </tr>
               
                 <tr>
                     <td>BiWeekly Net Pay</td>
                     <td align="right">$</td>
-                    <td align="right">325.46</td>
+                    <td align="right">{{biweeklyTotalNetPay | number : 2}}</td>
                 </tr>
             </tbody>
         </table>

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
        end
    end
 
-   resources :paychecks, only: [:create, :index, :update, :destroy] do
+   resources :paychecks, only: [:index, :create, :update, :destroy] do
        resources :paycheck_deductions, only: [:index, :create, :update, :destroy]
    end
    
