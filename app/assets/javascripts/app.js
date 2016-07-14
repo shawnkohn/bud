@@ -6,7 +6,12 @@ angular.module('bud', ['ui.router', 'templates', 'fcsa-number'])
         $stateProvider
             .state('dashboard', {
                 url: '/dashboard',
-                templateUrl: 'dashboard/_dashboard.html',
+                views: {
+                    '': { templateUrl: 'dashboard/_dashboard.html' },
+                    'income_section@dashboard': { templateUrl: 'dashboard/income_section.html'},
+                    'goals_section@dashboard' : { templateUrl: 'dashboard/goals_section.html'},
+                    'fixed_expenses_section@dashboard' : { templateUrl: 'dashboard/fixed_expenses_section.html'}
+                },
                 controller: 'DashboardCtrl'
             })
             .state('income', {

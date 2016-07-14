@@ -1,67 +1,11 @@
 <div class="col-md-11 col-md-offset-1 h2">
 
-    <div class="col-md-11">
-        Income <span class="h4"><a href="#/income">Edit</a></span>
-    </div>
-    <div class="col-md-7 col-md-offset-1 h4">
-        <div>
-            <span class="col-md-8"> 
-                BiWeekly Gross Income:
-            </span>
-            <span class="col-md-1"> $ </span>
-            <span class="col-md-3 currency_amount"> {{grossIncome | number : 2}} </span>
-        </div>
-        <div class="dashboard_row"> 
-            <span class="col-md-8"> 
-                BiWeekly Net Income:
-            </span>
-            <span class="col-md-1"> $ </span>
-            <span class="col-md-3 currency_amount"> {{netIncome | number : 2}} </span>
-        </div> 
-    </div>
+    <div ui-view="income_section"></div> 
     
-    
-    <div class="col-md-11 dashboard_row">
-        Financial Goals <span class="h4"><a href="#/goals">Edit</a></span>
-    </div>
-    <div class="col-md-7 col-md-offset-1 h4">
-        <div>
-            <span class="col-md-8"> 
-                Monthly Income for Goals:
-            </span>
-            <span class="col-md-1"> $ </span>
-            <span class="col-md-3 currency_amount"> xxx.xx </span>
-        </div>
-    </div>
+    <div ui-view="goals_section"></div>
 
+    <div ui-view=" fixed_expenses_section"></div>
     
-    <div class="col-md-11 dashboard_row">
-        Expenses <span class="h4"><a href="#/goals">Edit</a></span>
-    </div>
-    <div class="col-md-7 col-md-offset-1 h4">
-        <div>
-            <span class="col-md-8"> 
-                Monthly Irregular Expenses:
-            </span>
-            <span class="col-md-1"> $ </span>
-            <span class="col-md-3 currency_amount"> xxx.xx </span>
-        </div>
-        <div class="dashboard_row">
-            <span class="col-md-8"> 
-                Monthly Irregular Expenses:
-            </span>
-            <span class="col-md-1"> $ </span>
-            <span class="col-md-3 currency_amount"> xxx.xx </span>
-        </div>
-        <div class="dashboard_row">
-            <span class="col-md-8"> 
-                Monthly Irregular Expenses:
-            </span>
-            <span class="col-md-1"> $ </span>
-            <span class="col-md-3 currency_amount"> xxx.xx </span>
-        </div>
-    </div>
-
 </div>
 
 

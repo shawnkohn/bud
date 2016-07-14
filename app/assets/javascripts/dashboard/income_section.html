@@ -1,0 +1,20 @@
+    <div class="col-md-11">
+        Income <span class="h4"><a href="#/income">Edit</a></span>
+    </div>
+    <div class="col-md-7 col-md-offset-1 h4">
+        <div>
+            <span class="col-md-8"> 
+                BiWeekly Gross Income:
+            </span>
+            <span class="col-md-1"> $ </span>
+            <span class="col-md-3 currency_amount"> {{grossIncome | number : 2}} </span>
+        </div>
+        <div class="dashboard_row"> 
+            <span class="col-md-8"> 
+                BiWeekly Net Income:
+            </span>
+            <span class="col-md-1"> $ </span>
+            <span class="col-md-3 currency_amount"> {{netIncome | number : 2}} </span>
+        </div> 
+    </div>
+
