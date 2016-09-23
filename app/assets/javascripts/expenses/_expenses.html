@@ -1,0 +1,40 @@
+
+<div class="row">
+    <div class="h6 co">
+<div class="row">
+    <div class="h2 col-md-8 col-md-offset-2">
+        <table class="table table-borderless">
+            <tbody>
+                <tr>
+                    <td>BiWeekly Fixed Expenses</td>
+                    <td align="right">$</td>
+                    <td align="right">{{biweeklyFixedExpenses | number : 2}}</td>
+                </tr>
+              
+                <tr>
+                    <td>Monthly FixedExpenses</td>
+                    <td align="right">$</td>
+                    <td align="right">{{monthlyFixedExpenses | number : 2}}</td>
+                </tr>
+                <tr>
+                    <td>Non Monthly Expenses</td>
+                    <td align="right">$</td>
+                    <td align="right">{{nonMonthlyExpenses | number : 2}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="h2 col-md-12 col-md-offset-2">
+    
+        <span style="padding-right:5px;">BiWeekly Fixed Expenses</span>  
+        <a class="btn btn-primary btn-sm" 
+            role="button" 
+            ng-click="stateAddingNewPaycheck=true" 
+            ng-show="!stateAddingNewPaycheck">
+            New
+        </a>
+    </div>
+</div>
