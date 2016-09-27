@@ -34,4 +34,10 @@ angular.module('bud', ['ui.router', 'templates', 'fcsa-number'])
             maxDecimals: 2,
             preventInvalidInput: true
         })
-}]);
+    }])
+.config([
+    "$httpProvider", 
+    function($httpProvider) {
+                  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+    }
+]);
