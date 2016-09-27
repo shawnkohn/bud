@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class PaycheckDeductionsControllerTest < ActionController::TestCase
-    include Devise::TestHelpers
+    include Devise::Test::ControllerHelpers
 
  #   setup :initialize_paycheck_deduction
     

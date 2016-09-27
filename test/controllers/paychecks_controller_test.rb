@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PaychecksControllerTest < ActionController::TestCase
 
-    include Devise::TestHelpers
+    include Devise::Test::ControllerHelpers
 
 #    setup :initialize_paycheck
     
